@@ -27,7 +27,7 @@ public class FixHandPose : ResoniteMod {
 			// Is this needed or will it compound?
 			__instance.BodyNodePositionOffset = defaultPositionOffset;
 			__instance.BodyNodeRotationOffset = defaultRotationOffset;
-			Msg("pos, rot, bnpo, bnro:", defaultRotationOffset.ToString(), defaultRotationOffset.ToString(), __instance.BodyNodePositionOffset.ToString(), __instance.BodyNodeRotationOffset.ToString())
+			Msg("pos, rot, bnpo, bnro:", defaultRotationOffset.ToString(), defaultRotationOffset.ToString(), __instance.BodyNodePositionOffset.ToString(), __instance.BodyNodeRotationOffset.ToString());
         }
     }
 }
