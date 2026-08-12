@@ -21,8 +21,12 @@ public class FixHandPose : ResoniteMod {
     // Example of how a HarmonyPatch can be formatted, Note that the following isn't a real patch and will not compile.
     [HarmonyPatch(typeof(OffsetableTrackedObject), "Initialize")]
     class OffsetableTrackedObject_Initialize_Patch {
-        static void Postfix(OffsetableTrackedObject __instance, float3 defaultPositionOffset, floatQ defaultRotationOffset) {
-            Msg("Fixing hand pose");
+		// It seems this doesn't work because VR_ControllerState.Pack
+		// only packs handPosition and handRotation when this.isTracking
+		// is true, which it does not default to when it is
+		// initialized...?
+        static void Postfix(OffsetableTrackedObject __instance, string uniqueIdentifier, float3 defaultPositionOffset, floatQ defaultRotationOffset) {
+            Msg("Fixing hand pose for", uniqueIdentifier);
 			__instance.UpdateOffset(defaultPositionOffset, defaultRotationOffset);
 			// Is this needed or will it compound?
 			__instance.BodyNodePositionOffset = defaultPositionOffset;
