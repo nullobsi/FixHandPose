@@ -4,6 +4,7 @@ using BepInEx.NET.Common;
 using BepInExResoniteShim;
 using BepisResoniteWrapper;
 using HarmonyLib;
+using FrooxEngine;
 using Elements.Core;
 
 namespace FixHandPose.FrooxEngine;
@@ -36,7 +37,7 @@ public class Plugin : BasePlugin
         }
     }
 
-    [HarmonyPatch(typeof(OffsetableTrackedObject), "Initialize")]
+    [HarmonyPatch(typeof(OffsetableTrackedObject), nameof(OffsetableTrackedObject.Initialize)]
     class OffsetableTrackedObject_Initialize_Patch
     {
         // It seems this doesn't work because VR_ControllerState.Pack
@@ -45,12 +46,12 @@ public class Plugin : BasePlugin
         // initialized...?
         static void Postfix(OffsetableTrackedObject __instance, string uniqueIdentifier, float3 defaultPositionOffset, floatQ defaultRotationOffset)
         {
-            Msg("Fixing hand pose for", uniqueIdentifier);
+            Log.LogInfo($"Fixing hand pose for {uniqueIdentifier}");
             __instance.UpdateOffset(defaultPositionOffset, defaultRotationOffset);
             // Is this needed or will it compound?
             __instance.BodyNodePositionOffset = defaultPositionOffset;
             __instance.BodyNodeRotationOffset = defaultRotationOffset;
-            //Msg("pos, rot, bnpo, bnro:", defaultRotationOffset.ToString(), defaultRotationOffset.ToString(), __instance.BodyNodePositionOffset.ToString(), __instance.BodyNodeRotationOffset.ToString());
+            //Log.LogInfo("pos, rot, bnpo, bnro:", defaultRotationOffset.ToString(), defaultRotationOffset.ToString(), __instance.BodyNodePositionOffset.ToString(), __instance.BodyNodeRotationOffset.ToString());
         }
     }
 }

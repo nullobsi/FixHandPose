@@ -33,13 +33,7 @@
     <PackageReference Include="BepInEx.Unity.Mono" Version="6.0.0-be.*" IncludeAssets="compile" />
 	-->
     <PackageReference Include="BepInEx.Core" Version="5.*"/>
-    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*"/>
     <PackageReference Include="UnityEngine.Modules" Version="2019.4.19" IncludeAssets="compile"/>
-  </ItemGroup>
-
-  <!-- NuGet fallback stripped game references -->
-  <ItemGroup Condition="!Exists('$(GamePath)')">
-    <PackageReference Include="Resonite.GameLibs" Version="*" PrivateAssets="all"/>
   </ItemGroup>
 
   <!-- Local game references -->

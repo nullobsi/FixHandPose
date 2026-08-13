@@ -1,32 +1,35 @@
 using BepInEx;
 using BepInEx.Logging;
+using HarmonyLib;
 /* BepInEx 6
 using BepInEx.Unity.Mono;
 */
 
-namespace FixHandPose.Unity;
-
-[BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
-public class Plugin : BaseUnityPlugin
+namespace FixHandPose.Unity
 {
-    internal static new ManualLogSource Logger;
 
-    private void Awake()
+    [BepInPlugin("FixHandPose.Unity", "FixHandPose (for Unity)", "1.0.0")]
+    public class Plugin : BaseUnityPlugin
     {
-        // Plugin startup logic
-        Logger = base.Logger;
-        Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
+        internal static new ManualLogSource Logger;
 
-        try
+        private void Awake()
         {
-            Harmony harmony = new Harmony("dog.unix.FixHandPose.Unity");
-            harmony.PatchAll();
+            // Plugin startup logic
+            Logger = base.Logger;
+            Logger.LogInfo($"Plugin FixHandPose.Unity is loaded!");
 
-            Log.LogInfo("FixHandPose: Unity patches applied");
-        }
-        catch (Exception ex)
-        {
-            Log.LogError($"FixHandPose: Unity failed to patch: {ex}");
+            try
+            {
+                Harmony harmony = new Harmony("dog.unix.FixHandPose.Unity");
+                harmony.PatchAll();
+
+                Logger.LogInfo("FixHandPose: Unity patches applied");
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"FixHandPose: Unity failed to patch: {ex}");
+            }
         }
     }
 }
