@@ -37,7 +37,7 @@ public class Plugin : BasePlugin
         }
     }
 
-    [HarmonyPatch(typeof(OffsetableTrackedObject), nameof(OffsetableTrackedObject.Initialize)]
+    [HarmonyPatch(typeof(OffsetableTrackedObject), nameof(OffsetableTrackedObject.Initialize))]
     class OffsetableTrackedObject_Initialize_Patch
     {
         // It seems this doesn't work because VR_ControllerState.Pack

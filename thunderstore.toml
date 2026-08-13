@@ -46,7 +46,6 @@ target = "Renderer/BepInEx/plugins/FixHandPose.Unity/"
 source = "./CHANGELOG.md"
 target = "/"
 
-Uncomment the following line to include LICENSE file in your mod package, if you have one.
 [[build.copy]]
 source = "./LICENSE"
 target = "/"
