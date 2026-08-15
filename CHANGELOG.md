@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## 1.0.1 - 2026-08-14
+### Fixed
+Added missing dependency on RenderiteHook
+
 ## [1.0.0] - 2026-08-12
 
 ### Added

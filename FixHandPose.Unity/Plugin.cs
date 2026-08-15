@@ -8,7 +8,7 @@ using BepInEx.Unity.Mono;
 namespace FixHandPose.Unity
 {
 
-    [BepInPlugin("FixHandPose.Unity", "FixHandPose (for Unity)", "1.0.0")]
+    [BepInPlugin("FixHandPose.Unity", "FixHandPose (for Unity)", "1.0.1")]
     public class Plugin : BaseUnityPlugin
     {
         internal static new ManualLogSource Logger;
